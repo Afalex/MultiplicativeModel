@@ -8,10 +8,10 @@ namespace MultiplicativeModel
     {
         static void Main(string[] args)
         {
-            double queueSize = 200;
 
             double dispersionRatio = 100;
-            double z = 100;
+            double z = 50;
+            double queueSize = GetQueueSize((int)z);
 
             double n = Math.Pow(dispersionRatio, 1 / z);
 
@@ -42,6 +42,11 @@ namespace MultiplicativeModel
 
 
             Console.Read();
+        }
+
+        public static int GetQueueSize(int membersCount)
+        {
+            return (int)((Math.Log10(membersCount) + 1)*100);
         }
 
         public static void ShowResult(List<double> values)
