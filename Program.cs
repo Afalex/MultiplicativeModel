@@ -9,7 +9,7 @@ namespace MultiplicativeModel
         static void Main(string[] args)
         {
 
-            double z = 100;
+            double z = 10;
 
             double maxCountForMember = z* 2  + z * 0.5;
         //    double queueSize = GetQueueSize((int)z);
@@ -31,7 +31,7 @@ namespace MultiplicativeModel
             double sum = values.Sum();
 
             Console.WriteLine("ratio sum: " + sum);
-            double XInequation = 1; //queueSize / sum; //GetFactorRatio(
+            double XInequation = 1; //queueSize / sum;
 
             List<double> absolutCount = new List<double>();
 
@@ -44,11 +44,6 @@ namespace MultiplicativeModel
 
 
             Console.Read();
-        }
-
-        public static int GetQueueSize(int membersCount)
-        {
-            return (int)((Math.Log10(membersCount) + 1)*100);
         }
 
         public static void ShowResult(List<double> values)
@@ -77,25 +72,5 @@ namespace MultiplicativeModel
             return GetAvverage(values.Select(v => Math.Pow(v, 2)).ToList()) - Math.Pow(GetAvverage(values), 2);
         }
 
-        /// <summary>
-        ///  В случае большой конкуренции базовый коэффициент настолько мал, что не представляет собой целой число, 
-        ///  а количество минимальной очереди равно сумме чисел арифметической прогрессии с шагом 1/advCount 
-        ///  от a1 до an, но при целом значении базового коэффициента, определяющего поправку
-        /// </summary>
-        /// <param name="factor">используй GetBaseFactor</param>
-        /// <param name="factorRatio">определяет число, на которое нужно умножить коэффициент, чтобы получить базовый коэффициент для
-        /// поправки</param>
-        /// <returns></returns>
-        public static (double val, int factorRatio) GetFactorRatio(double factor, int factorRatio = 0)
-        {
-            if (factor < 1)
-            {
-                factorRatio++;
-                factor *= 10;
-            }
-            else
-                return (factor, factorRatio);
-            return GetFactorRatio(factor, factorRatio);
-        }
     }
 }
