@@ -9,11 +9,15 @@ namespace MultiplicativeModel
         static void Main(string[] args)
         {
 
-            double dispersionRatio = 100;
-            double z = 50;
-            double queueSize = GetQueueSize((int)z);
+            double z = 100;
 
-            double n = Math.Pow(dispersionRatio, 1 / z);
+            double maxCountForMember = z* 2  + z * 0.5;
+        //    double queueSize = GetQueueSize((int)z);
+
+            double n = Math.Pow(maxCountForMember, 1 / z);
+
+            double queueSize = z * 1.5;// n;
+
 
             List<double> values = new List<double>();
 
@@ -27,9 +31,7 @@ namespace MultiplicativeModel
             double sum = values.Sum();
 
             Console.WriteLine("ratio sum: " + sum);
-            double XInequation = queueSize / sum; //GetFactorRatio(
-
-
+            double XInequation = 1; //queueSize / sum; //GetFactorRatio(
 
             List<double> absolutCount = new List<double>();
 
