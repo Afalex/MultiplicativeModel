@@ -16,8 +16,6 @@ namespace MultiplicativeModel
 
             double n = Math.Pow(maxCountForMember, 1 / z);
 
-            double queueSize = z * 1.5;// n;
-
 
             List<double> values = new List<double>();
 
