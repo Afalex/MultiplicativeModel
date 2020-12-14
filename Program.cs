@@ -24,8 +24,8 @@ namespace MultiplicativeModel
 
         public static void ShowResult(List<double> values)
         {
-            foreach (var val in values)
-                Console.WriteLine(Math.Round(val));
+            for (int i = 1; i < values.Count+1; i++)
+                Console.WriteLine($"{i}: {Math.Round(values[i-1])}");
 
             Console.WriteLine("Avverage: " + GetAvverage(values));
             Console.WriteLine("Disperion: " + GetDisperion(values));
