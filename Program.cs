@@ -9,33 +9,32 @@ namespace MultiplicativeModel
         static void Main(string[] args)
         {
 
-            double z = 10;
+            double membersCount = 10;
 
-            double maxCountForMember = z* 2  + z * 0.5;
-        //    double queueSize = GetQueueSize((int)z);
+            double maxCountForMember = membersCount * 2.5;//контроль дисперсии
 
-            double n = Math.Pow(maxCountForMember, 1 / z);
+
+            double numForPower = Math.Pow(maxCountForMember, 1 / membersCount);
 
 
             List<double> values = new List<double>();
 
 
-            for (int i = 0; i < z; i++)
+            for (int i = 0; i < membersCount; i++)
             {
-                values.Add(Math.Pow(n, i));
+                values.Add(Math.Pow(numForPower, i));
             }
 
 
-            double sum = values.Sum();
+            double powersSum = values.Sum();
 
-            Console.WriteLine("ratio sum: " + sum);
-            double XInequation = 1; //queueSize / sum;
+            Console.WriteLine("powers sum: " + powersSum);
 
             List<double> absolutCount = new List<double>();
 
             foreach (double val in values)
             {
-                absolutCount.Add(val * XInequation);
+                absolutCount.Add(val);
             }
 
             ShowResult(absolutCount);
@@ -47,7 +46,7 @@ namespace MultiplicativeModel
         public static void ShowResult(List<double> values)
         {
             foreach (var val in values)
-                Console.WriteLine(val);
+                Console.WriteLine(Math.Round(val));
 
             Console.WriteLine("Avverage: " + GetAvverage(values));
             Console.WriteLine("Disperion: " + GetDisperion(values));
@@ -57,7 +56,7 @@ namespace MultiplicativeModel
 
             double countSum = values.Sum();
 
-            Console.WriteLine("count sum: " + countSum);
+            Console.WriteLine("queue size: " + countSum);
         }
 
         public static double GetAvverage(List<double> values)
@@ -69,6 +68,5 @@ namespace MultiplicativeModel
         {
             return GetAvverage(values.Select(v => Math.Pow(v, 2)).ToList()) - Math.Pow(GetAvverage(values), 2);
         }
-
     }
 }
