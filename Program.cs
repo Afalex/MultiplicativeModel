@@ -8,37 +8,16 @@ namespace MultiplicativeModel
     {
         static void Main(string[] args)
         {
-
             double membersCount = 10;
-
-            double maxCountForMember = membersCount * 2.5;//контроль дисперсии
-
-
-            double numForPower = Math.Pow(maxCountForMember, 1 / membersCount);
-
-
-            List<double> values = new List<double>();
+            double maxCountForMember = membersCount * 2.5; //максимальное кол-во повторов, также контроль дисперсии
+            double numForPower = Math.Pow(maxCountForMember, 1 / membersCount); //основание степени
+            List<double> powers = new List<double>();
 
 
             for (int i = 0; i < membersCount; i++)
-            {
-                values.Add(Math.Pow(numForPower, i));
-            }
+                powers.Add(Math.Pow(numForPower, i));
 
-
-            double powersSum = values.Sum();
-
-            Console.WriteLine("powers sum: " + powersSum);
-
-            List<double> absolutCount = new List<double>();
-
-            foreach (double val in values)
-            {
-                absolutCount.Add(val);
-            }
-
-            ShowResult(absolutCount);
-
+            ShowResult(powers);
 
             Console.Read();
         }
